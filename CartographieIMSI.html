@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logigrammes des Processus - IMSI</title>
+    <style>
+        :root {
+            --primary: #1F4E79;
+            --secondary: #2E75B6;
+            --accent: #f59e0b;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --border: #e2e8f0;
+            --input-bg: #e0f2fe;
+            --process-bg: #dcfce7;
+            --output-bg: #f3e8ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 300px;
+            background-color: var(--primary);
+            color: white;
+            overflow-y: auto;
+            padding: 20px 0;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            padding: 15px 25px;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .nav-btn.active {
+            background-color: var(--secondary);
+            color: white;
+            border-left: 4px solid var(--accent);
+            font-weight: bold;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1;
+            padding: 30px 40px;
+            overflow-y: auto;
+        }
+
+        .process-view {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .process-view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Process Header (Metadata) */
+        .process-header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-top: 5px solid var(--secondary);
+        }
+
+        .process-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin: 0 0 15px 0;
+        }
+
+        .metadata-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+
+        .meta-box {
+            background: var(--bg-light);
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .meta-box strong {
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Logigramme Layout */
+        .logigramme-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 20px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .flow-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column-title {
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .col-entrees .column-title { background-color: #0284c7; }
+        .col-processus .column-title { background-color: #16a34a; }
+        .col-sorties .column-title { background-color: #9333ea; }
+
+        /* Flow Items */
+        .item-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .item-box {
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border-left: 4px solid;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .col-entrees .item-box { background: var(--input-bg); border-color: #0284c7; }
+        .col-sorties .item-box { background: var(--output-bg); border-color: #9333ea; }
+
+        /* Process Steps */
+        .step-box {
+            background: var(--process-bg);
+            border: 2px solid #16a34a;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            position: relative;
+            margin-bottom: 25px;
+            z-index: 2;
+        }
+
+        .step-box::after {
+            content: '↓';
+            position: absolute;
+            bottom: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .step-box:last-child::after {
+            display: none;
+        }
+
+        /* Connecting Arrows between columns */
+        .arrow-col {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #94a3b8;
+            padding: 0 10px;
+        }
+
+        /* Finalité */
+        .finalite-box {
+            margin-top: 30px;
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            border-left: 6px solid #f59e0b;
+            padding: 20px;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Cartographie IMSI</h2>
+        <button class="nav-btn active" onclick="openProcess('R1_1')">R1.1 - Enseignement</button>
+        <button class="nav-btn" onclick="openProcess('R1_2')">R1.2 - Scolarité</button>
+        <button class="nav-btn" onclick="openProcess('R1_3')">R1.3 - Évaluation</button>
+        <button class="nav-btn" onclick="openProcess('R1_4')">R1.4 - Projet 1275</button>
+        <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 20px;">
+        <button class="nav-btn" onclick="openProcess('R2_1')">R2.1 - Laboratoires</button>
+        <button class="nav-btn" onclick="openProcess('R2_2')">R2.2 - Projets Scientifiques</button>
+        <button class="nav-btn" onclick="openProcess('R2_3')">R2.3 - Production Scientifique</button>
+        <button class="nav-btn" onclick="openProcess('R2_4')">R2.4 - Doctorat</button>
+    </div>
+
+    <div class="main-content">
+
+        <div id="R1_1" class="process-view active">
+            <div class="process-header">
+                <h2 class="process-title">R1.1 – Enseignement</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat chargé de la pédagogie, Vice-décanat, Chefs de département</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Taux de réalisation, Taux d’avancement, Taux de réussite, Satisfaction</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>RH, Moyens généraux, SI, Bibliothèque</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Retard programmes, Absence enseignants, Réclamations</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Offre de formation habilitée</li>
+                        <li class="item-box">Programmes pédagogiques</li>
+                        <li class="item-box">Calendrier universitaire</li>
+                        <li class="item-box">Affectation des enseignants</li>
+                        <li class="item-box">Listes des étudiants</li>
+                        <li class="item-box">Moyens matériels et numériques</li>
+                    </ul>
+                </div>
+
+                <div class="arrow-col">→</div>
+
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Planification pédagogique</div>
+                    <div class="step-box">2. Préparation des enseignements</div>
+                    <div class="step-box">3. Réalisation des cours / TD / TP</div>
+                    <div class="step-box">4. Suivi de l’assiduité</div>
+                    <div class="step-box">5. Évaluation des apprentissages</div>
+                    <div class="step-box">6. Analyse et auto-évaluation</div>
+                </div>
+
+                <div class="arrow-col">→</div>
+
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Enseignements réalisés</li>
+                        <li class="item-box">Programmes exécutés</li>
+                        <li class="item-box">Compétences acquises</li>
+                        <li class="item-box">PV de conseil de discipline</li>
+                        <li class="item-box">Soutenances des PFE</li>
+                        <li class="item-box">PV de délibérations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Assurer un enseignement conforme aux programmes, aux exigences réglementaires et aux attentes des parties intéressées pertinentes.
+            </div>
+        </div>
+
+        <div id="R1_2" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">R1.2 – Scolarité</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat, Vice-décanat, Service de scolarité</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Taux d’inscription, Délai de traitement, Taux de satisfaction</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>RH, SI, Archives, Vie estudiantine</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Erreurs dossiers, Retard d’inscription, Saturation du service</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Dossiers d’inscription</li>
+                        <li class="item-box">Calendrier universitaire</li>
+                        <li class="item-box">Textes réglementaires</li>
+                        <li class="item-box">Décisions pédagogiques</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Accueil et information</div>
+                    <div class="step-box">2. Inscriptions et réinscriptions</div>
+                    <div class="step-box">3. Gestion des dossiers étudiants</div>
+                    <div class="step-box">4. Suivi administratif</div>
+                    <div class="step-box">5. Délivrance documents</div>
+                    <div class="step-box">6. Traitement des demandes</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Étudiants inscrits</li>
+                        <li class="item-box">Dossiers à jour</li>
+                        <li class="item-box">Documents délivrés (Cartes, Relevés)</li>
+                        <li class="item-box">Attestations de scolarité</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Assurer une gestion administrative fiable, conforme et continue du parcours étudiant.
+            </div>
+        </div>
+
+        <div id="R1_3" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">R1.3 – Évaluation et diplomation</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Chefs de département, Comités pédagogiques</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Taux de réussite, Délai publication résultats, Taux diplomation</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>RH, SI, Scolarité, Archives</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Erreurs de notes, Retard de publication, Contestations</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Calendrier des évaluations</li>
+                        <li class="item-box">Notes du contrôle continu</li>
+                        <li class="item-box">Barèmes et grilles</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Planification des évaluations</div>
+                    <div class="step-box">2. Validation des sujets</div>
+                    <div class="step-box">3. Déroulement des évaluations</div>
+                    <div class="step-box">4. Correction et saisie des notes</div>
+                    <div class="step-box">5. Délibérations</div>
+                    <div class="step-box">6. Édition des diplômes</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Notes et résultats validés</li>
+                        <li class="item-box">PV de délibération</li>
+                        <li class="item-box">Diplômes délivrés</li>
+                        <li class="item-box">Recours traités</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Garantir des évaluations fiables et assurer la diplomation dans les délais.
+            </div>
+        </div>
+
+         <div id="R1_4" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">R1.4 – Projet 1275 et entrepreneuriat</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Maison de l’entrepreneuriat, Chefs de département</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Projets accompagnés, Taux d'orientation incubateur</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>CDE, Incubateur, Partenaires économiques</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Faible adhésion, Manque de partenaires, Projets non aboutis</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Orientations MESRS 1275</li>
+                        <li class="item-box">Idées de projets</li>
+                        <li class="item-box">Besoins socio-économiques</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Sensibilisation</div>
+                    <div class="step-box">2. Identification des idées</div>
+                    <div class="step-box">3. Accompagnement et maturation</div>
+                    <div class="step-box">4. Encadrement (Stage entreprise)</div>
+                    <div class="step-box">5. Orientation vers incubateur</div>
+                    <div class="step-box">6. Suivi des projets</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Projets intégrés au 1275</li>
+                        <li class="item-box">Partenariats mobilisés</li>
+                        <li class="item-box">Prototype réalisé</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Favoriser l’esprit entrepreneurial et accompagner les étudiants dans la maturation de projets.
+            </div>
+        </div>
+        <div id="R2_1" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">R2.1 – Laboratoires de recherche</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat recherche, Directeurs labos, Conseils sc.</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Activités réalisées, Thèses soutenues, Manifestations</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>RH, SI, Bibliothèque, Finances</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Faible coordination, Manque de moyens, Retards</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Orientations de recherche</li>
+                        <li class="item-box">Axes de recherche</li>
+                        <li class="item-box">Besoins socio-économiques</li>
+                        <li class="item-box">Projets académiques</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Définition des axes et programmation</div>
+                    <div class="step-box">2. Organisation du laboratoire</div>
+                    <div class="step-box">3. Réalisation des activités</div>
+                    <div class="step-box">4. Encadrement scientifique</div>
+                    <div class="step-box">5. Suivi et reporting</div>
+                    <div class="step-box">6. Amélioration et valorisation</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Bilan et rapports d'activités</li>
+                        <li class="item-box">Manifestations organisées</li>
+                        <li class="item-box">Travaux encadrés</li>
+                        <li class="item-box">Résultats valorisés</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Structurer et animer les laboratoires pour soutenir une recherche organisée, performante et conforme aux orientations de l’université.
+            </div>
+        </div>
+
+        <div id="R2_2" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">R2.2 – Projets scientifiques</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat recherche, Directeurs labos, Chefs de projets</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Projets soumis/retenus, Taux d'exécution</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>RH, Finances, SI, Partenaires</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Non-sélection, Retard d'exécution, Insuffisance budget</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Appels à projets (PRFU, PNR)</li>
+                        <li class="item-box">Idées et problématiques</li>
+                        <li class="item-box">Partenariats scientifiques</li>
+                        <li class="item-box">Moyens financiers</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Veille et diffusion des appels</div>
+                    <div class="step-box">2. Montage et formulation du projet</div>
+                    <div class="step-box">3. Soumission et validation</div>
+                    <div class="step-box">4. Mise en œuvre du projet</div>
+                    <div class="step-box">5. Suivi administratif et financier</div>
+                    <div class="step-box">6. Clôture, bilan et amélioration</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Projets élaborés et soumis</li>
+                        <li class="item-box">Financements mobilisés</li>
+                        <li class="item-box">Livrables scientifiques</li>
+                        <li class="item-box">Résultats exploités</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Développer des projets scientifiques pertinents, financés, suivis et porteurs de résultats utiles.
+            </div>
+        </div>
+
+        <div id="R2_3" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">R2.3 – Production scientifique</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat recherche, Directeurs labos, Chercheurs</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Articles publiés, Indice h, Publications indexées</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>RH, Bibliothèque, SI, Laboratoires</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Rejet d'articles, Faible référencement, Normes non respectées</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Résultats de recherche</li>
+                        <li class="item-box">Travaux doctoraux</li>
+                        <li class="item-box">Appels à contribution (revues)</li>
+                        <li class="item-box">Normes éditoriales</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Identification des travaux</div>
+                    <div class="step-box">2. Rédaction et structuration</div>
+                    <div class="step-box">3. Choix du support de publication</div>
+                    <div class="step-box">4. Soumission (revue, colloque)</div>
+                    <div class="step-box">5. Révision et publication</div>
+                    <div class="step-box">6. Diffusion et référencement</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Articles publiés (revues)</li>
+                        <li class="item-box">Communications présentées</li>
+                        <li class="item-box">Productions référencées</li>
+                        <li class="item-box">Visibilité (ResearchGate)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Accroître la production scientifique à travers la publication, tout en renforçant le référencement et la visibilité.
+            </div>
+        </div>
+
+        <div id="R2_4" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">R2.4 – Doctorat</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat recherche, Dir. formation doctorale, Encadreurs</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Taux d'avancement, Nb de soutenances, Diplomation</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>RH, Laboratoires, Bibliothèque, Scolarité doctorale</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Abandon/Retard de thèse, Encadrement insuffisant</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Offres de formation doctorale</li>
+                        <li class="item-box">Sujets de thèse & Candidats</li>
+                        <li class="item-box">Ressources scientifiques</li>
+                        <li class="item-box">État d’avancement des travaux</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Information et admission</div>
+                    <div class="step-box">2. Inscriptions et réinscriptions</div>
+                    <div class="step-box">3. Encadrement et formation</div>
+                    <div class="step-box">4. Suivi de l’avancement</div>
+                    <div class="step-box">5. Soutenance et validation</div>
+                    <div class="step-box">6. Délivrance du diplôme</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Doctorants inscrits</li>
+                        <li class="item-box">Thèses encadrées / Cotutelle</li>
+                        <li class="item-box">Publications doctorales</li>
+                        <li class="item-box">Soutenances organisées / Diplômes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Assurer un parcours doctoral structuré, conforme et favorable à l’aboutissement des thèses.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openProcess(processId) {
+            // Masquer toutes les vues
+            document.querySelectorAll('.process-view').forEach(view => {
+                view.classList.remove('active');
+            });
+            // Désélectionner tous les boutons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Afficher la vue ciblée
+            document.getElementById(processId).classList.add('active');
+            // Activer le bouton cliqué (basé sur le clic de l'utilisateur)
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
