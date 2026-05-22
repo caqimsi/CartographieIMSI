@@ -228,6 +228,91 @@
             font-size: 1.1rem;
             text-align: center;
         }
+        /* Styles pour le Schéma Détaillé en Zigzag */
+        .details-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px dashed var(--border);
+        }
+
+        .details-title {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        .zigzag-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .zigzag-step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .zigzag-step:nth-child(even) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            border: 4px solid #dbeafe;
+            z-index: 2;
+        }
+
+        .step-content {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            flex-grow: 1;
+        }
+
+        .step-content h4 {
+            margin: 0 0 5px 0;
+            color: var(--secondary);
+        }
+
+        .step-content p {
+            margin: 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* Ligne de liaison verticale 
+        .zigzag-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: #cbd5e1;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        */
 
     </style>
 </head>
@@ -302,6 +387,53 @@
             <div class="finalite-box">
                 <strong>🎯 Finalité :</strong> Assurer un enseignement conforme aux programmes, aux exigences réglementaires et aux attentes des parties intéressées pertinentes.
             </div>
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Planification pédagogique</h4>
+                            <p>Élaboration des emplois du temps, répartition des charges et affectation des enseignants.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Préparation des enseignements</h4>
+                            <p>Préparation des supports de cours, TD et TP, en présentiel et à distance.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Réalisation des enseignements</h4>
+                            <p>Déroulement effectif des cours, TD, TP, ateliers pratiques et suivi des stages.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Suivi de l’assiduité</h4>
+                            <p>Contrôle des présences et élaboration des conseils de disciplines en cas d'absences injustifiées.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Évaluation des apprentissages</h4>
+                            <p>Organisation des examens, des contrôles continus (CC) et des tests d'évaluation.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Analyse et auto-évaluation</h4>
+                            <p>Analyse globale des résultats obtenus et mise en place d'actions d'auto-évaluation pédagogique.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="R1_2" class="process-view">
@@ -350,6 +482,53 @@
             <div class="finalite-box">
                 <strong>🎯 Finalité :</strong> Assurer une gestion administrative fiable, conforme et continue du parcours étudiant.
             </div>
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Accueil et information </h4>
+                            <p>Réception des nouveaux bacheliers et information des étudiants sur les parcours.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Inscriptions et réinscriptions </h4>
+                            <p>Traitement administratif des inscriptions initiales et des réinscriptions annuelles.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Gestion des dossiers étudiants </h4>
+                            <p>Création, mise à jour et classement sécurisé des dossiers administratifs.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Suivi administratif des parcours </h4>
+                            <p>Mise à jour des cursus, des congés académiques et des réintégrations.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Délivrance des documents </h4>
+                            <p>Édition des cartes d'étudiants, attestations de scolarité et relevés de notes.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Traitement des demandes </h4>
+                            <p>Prise en charge des requêtes spécifiques et amélioration continue du service.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="R1_3" class="process-view">
@@ -397,6 +576,68 @@
             <div class="finalite-box">
                 <strong>🎯 Finalité :</strong> Garantir des évaluations fiables et assurer la diplomation dans les délais.
             </div>
+            <div class="details-section">
+                <h3 class="details-title">Schématisation du processus de préparation des examens</h3>
+                <div class="zigzag-container">
+                    
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Déclenchement et cadrage</h4>
+                            <p>Consultation du planning, réception des notes de la tutelle et validation des dates par les CPC.</p>
+                        </div>
+                    </div>
+
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Préparation des bases de données</h4>
+                            <p>Téléchargement des listes (Progress), gestion des abandons/exclus et extraction de la liste des matières.</p>
+                        </div>
+                    </div>
+
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Organisation logistique</h4>
+                            <p>Répartition des salles, impression des PV d'examen et établissement des listes de surveillance.</p>
+                        </div>
+                    </div>
+
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Assemblage des dossiers journaliers</h4>
+                            <p>Préparation des "chemises" par jour, copies d'examen, brouillons et vérification finale par les chefs de département.</p>
+                        </div>
+                    </div>
+
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Gestion du Jour J</h4>
+                            <p>Tirage des sujets le matin même, affectation des surveillants et supervision du bon déroulement.</p>
+                        </div>
+                    </div>
+
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Fin des examens et remise</h4>
+                            <p>Comptage des copies, signature des registres et remise des PV aux départements.</p>
+                        </div>
+                    </div>
+
+                    <div class="zigzag-step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>Gestion des problèmes</h4>
+                            <p>Résolution des problèmes administratifs en équipe ou transfert au conseil de discipline si nécessaire.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
          <div id="R1_4" class="process-view">
@@ -443,6 +684,53 @@
             <div class="finalite-box">
                 <strong>🎯 Finalité :</strong> Favoriser l’esprit entrepreneurial et accompagner les étudiants dans la maturation de projets.
             </div>
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Sensibilisation et information </h4>
+                            <p>Information des étudiants sur le dispositif 1275 et les opportunités entrepreneuriales.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Identification des idées de projet </h4>
+                            <p>Collecte, analyse et sélection des propositions de projets innovants.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Accompagnement et maturation </h4>
+                            <p>Suivi technique avec des orientations fournies par les partenaires économiques.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Intégration et encadrement </h4>
+                            <p>Intégration pédagogique du projet et encadrement via des stages en entreprise économique.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Orientation vers incubateur </h4>
+                            <p>Transfert des projets matures vers les incubateurs pour labellisation.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Suivi des projets et amélioration </h4>
+                            <p>Évaluation de l'aboutissement des projets et ajustement des méthodes d'accompagnement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="R2_1" class="process-view">
             <div class="process-header">
@@ -488,6 +776,53 @@
             </div>
             <div class="finalite-box">
                 <strong>🎯 Finalité :</strong> Structurer et animer les laboratoires pour soutenir une recherche organisée, performante et conforme aux orientations de l’université.
+            </div>
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Définition des axes </h4>
+                            <p>Identification et programmation des thématiques de recherche prioritaires.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Organisation et fonctionnement </h4>
+                            <p>Structuration des équipes de recherche et gestion des moyens matériels.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Réalisation des activités </h4>
+                            <p>Conduite des travaux de recherche académiques et appliqués.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Encadrement et animation </h4>
+                            <p>Supervision des chercheurs, des doctorants et organisation d'animations scientifiques.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Suivi et reporting </h4>
+                            <p>Évaluation de l'avancement des travaux et rédaction des rapports d'activités.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Amélioration et valorisation </h4>
+                            <p>Valorisation des résultats obtenus et mise en œuvre d'actions d'amélioration.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -536,6 +871,53 @@
             <div class="finalite-box">
                 <strong>🎯 Finalité :</strong> Développer des projets scientifiques pertinents, financés, suivis et porteurs de résultats utiles.
             </div>
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Veille et diffusion </h4>
+                            <p>Recherche et diffusion des appels à projets (PRFU, PNR) aux équipes.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Montage et formulation </h4>
+                            <p>Élaboration des propositions de projets autour d'idées et problématiques définies.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Soumission et validation </h4>
+                            <p>Dépôt officiel des dossiers et attente de la validation par les instances.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Mise en œuvre du projet </h4>
+                            <p>Lancement des travaux de recherche conformément aux objectifs fixés.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Suivi des projets </h4>
+                            <p>Suivi rigoureux sur le plan administratif, scientifique et financier.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Clôture et bilan </h4>
+                            <p>Rédaction du bilan final, clôture du projet et capitalisation pour amélioration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="R2_3" class="process-view">
@@ -583,6 +965,53 @@
             <div class="finalite-box">
                 <strong>🎯 Finalité :</strong> Accroître la production scientifique à travers la publication, tout en renforçant le référencement et la visibilité.
             </div>
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Identification des travaux </h4>
+                            <p>Sélection des travaux scientifiques et résultats de recherche valorisables.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Rédaction et structuration </h4>
+                            <p>Préparation de l’article ou de la communication selon les normes académiques.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Choix du support </h4>
+                            <p>Sélection de la revue, du colloque ou de l'ouvrage collectif pour publication ou diffusion.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Soumission </h4>
+                            <p>Dépôt officiel du manuscrit auprès de la revue, du colloque ou de l'ouvrage collectif.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Révision et acceptation </h4>
+                            <p>Processus de révision par les pairs, acceptation finale et publication.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Diffusion et référencement </h4>
+                            <p>Partage des travaux, référencement académique et suivi de l’impact scientifique.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="R2_4" class="process-view">
@@ -629,6 +1058,53 @@
             </div>
             <div class="finalite-box">
                 <strong>🎯 Finalité :</strong> Assurer un parcours doctoral structuré, conforme et favorable à l’aboutissement des thèses.
+            </div>
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Information et admission </h4>
+                            <p>Diffusion des offres de formation doctorale et traitement des candidatures.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Inscriptions et réinscriptions </h4>
+                            <p>Gestion administrative des inscriptions initiales et des renouvellements annuels.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Encadrement et formation </h4>
+                            <p>Accompagnement par l'encadreur et participation aux formations doctorales.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Suivi de l’avancement</h4>
+                            <p>Évaluation régulière de l'état d’avancement des travaux de thèse.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Soutenance et validation </h4>
+                            <p>Organisation du jury de soutenance et validation finale de la thèse.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Délivrance du diplôme </h4>
+                            <p>Remise officielle du diplôme de doctorat et intégration des actions d'amélioration.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
