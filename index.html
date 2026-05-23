@@ -6,313 +6,432 @@
     <title>Logigrammes des Processus - IMSI</title>
     <style>
         :root {
-            --primary: #1F4E79;
-            --secondary: #2E75B6;
-            --accent: #f59e0b;
-            --bg-light: #f8fafc;
-            --text-dark: #1e293b;
-            --border: #e2e8f0;
-            --input-bg: #e0f2fe;
-            --process-bg: #dcfce7;
-            --output-bg: #f3e8ff;
-        }
+        --primary: #1F4E79;
+        --secondary: #2E75B6;
+        --accent: #f59e0b;
+        --bg-light: #f8fafc;
+        --text-dark: #1e293b;
+        --border: #e2e8f0;
+        --input-bg: #e0f2fe;
+        --process-bg: #dcfce7;
+        --output-bg: #f3e8ff;
+    }
 
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+        width: 300px;
+        background-color: var(--primary);
+        color: white;
+        overflow-y: auto;
+        padding: 20px 0;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .sidebar h2 {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        padding: 0 20px;
+    }
+
+    .nav-btn {
+        width: 100%;
+        background: none;
+        border: none;
+        color: #cbd5e1;
+        padding: 15px 25px;
+        text-align: left;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        border-left: 4px solid transparent;
+        box-sizing: border-box;
+    }
+
+    .nav-btn:hover {
+        background-color: rgba(255,255,255,0.1);
+        color: white;
+    }
+
+    .nav-btn.active {
+        background-color: var(--secondary);
+        color: white;
+        border-left: 4px solid var(--accent);
+        font-weight: bold;
+    }
+
+    /* Main Content Area */
+    .main-content {
+        flex-grow: 1;
+        padding: 30px 40px;
+        overflow-y: auto;
+    }
+
+    .process-view {
+        display: none;
+        animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .process-view.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Process Header (Metadata) */
+    .process-header {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        margin-bottom: 30px;
+        border-top: 5px solid var(--secondary);
+    }
+
+    .process-title {
+        font-size: 1.8rem;
+        color: var(--primary);
+        margin: 0 0 15px 0;
+    }
+
+    .metadata-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+
+    .meta-box {
+        background: var(--bg-light);
+        padding: 10px 15px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+    }
+
+    .meta-box strong {
+        color: var(--secondary);
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    /* Logigramme Layout */
+    .logigramme-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 20px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .flow-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .column-title {
+        text-align: center;
+        font-weight: bold;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        color: white;
+    }
+
+    .col-entrees .column-title { background-color: #0284c7; }
+    .col-processus .column-title { background-color: #16a34a; }
+    .col-sorties .column-title { background-color: #9333ea; }
+
+    /* Flow Items */
+    .item-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .item-box {
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        border-left: 4px solid;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .col-entrees .item-box { background: var(--input-bg); border-color: #0284c7; }
+    .col-sorties .item-box { background: var(--output-bg); border-color: #9333ea; }
+
+    /* Process Steps */
+    .step-box {
+        background: var(--process-bg);
+        border: 2px solid #16a34a;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+        margin-bottom: 25px;
+        z-index: 2;
+    }
+
+    .step-box::after {
+        content: '↓';
+        position: absolute;
+        bottom: -22px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20px;
+        color: #16a34a;
+        font-weight: bold;
+    }
+
+    .step-box:last-child::after {
+        display: none;
+    }
+
+    /* Connecting Arrows between columns */
+    .arrow-col {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        color: #94a3b8;
+        padding: 0 10px;
+    }
+
+    /* Finalité */
+    .finalite-box {
+        margin-top: 30px;
+        background: #fffbeb;
+        border: 1px solid #fcd34d;
+        border-left: 6px solid #f59e0b;
+        padding: 20px;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    /* Styles pour le Schéma Détaillé en Zigzag */
+    .details-section {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 2px dashed var(--border);
+    }
+
+    .details-title {
+        color: var(--primary);
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    .zigzag-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .zigzag-step {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .zigzag-step:nth-child(even) {
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+
+    .step-number {
+        width: 60px;
+        height: 60px;
+        background: var(--secondary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+        border: 4px solid #dbeafe;
+        z-index: 2;
+    }
+
+    .step-content {
+        background: white;
+        padding: 15px 20px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        flex-grow: 1;
+    }
+
+    .step-content h4 {
+        margin: 0 0 5px 0;
+        color: var(--secondary);
+    }
+
+    .step-content p {
+        margin: 0;
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    /*
+    .zigzag-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 4px;
+        background: #cbd5e1;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+    /*
+    /* ==========================================================
+       REGLER L'AFFICHAGE POUR LES TELEPHONES (RESPONSIVE)
+       ========================================================== */
+    @media (max-width: 768px) {
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            height: 100vh;
+            flex-direction: column;
+            height: auto;
         }
 
-        /* Sidebar Navigation */
+        /* La barre latérale devient un menu horizontal défilant en haut */
         .sidebar {
-            width: 300px;
-            background-color: var(--primary);
-            color: white;
-            overflow-y: auto;
-            padding: 20px 0;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            width: 100%;
+            height: auto;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            -webkit-overflow-scrolling: touch;
         }
 
-        .sidebar h2 {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            padding: 0 20px;
+        .sidebar h2, .sidebar hr {
+            display: none !important; /* Cache le titre et les lignes superflues */
         }
 
         .nav-btn {
-            width: 100%;
-            background: none;
-            border: none;
-            color: #cbd5e1;
-            padding: 15px 25px;
-            text-align: left;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-left: 4px solid transparent;
-        }
-
-        .nav-btn:hover {
-            background-color: rgba(255,255,255,0.1);
-            color: white;
+            width: auto;
+            padding: 15px 20px;
+            border-left: none;
+            border-bottom: 4px solid transparent;
+            font-size: 0.9rem;
+            display: inline-block;
         }
 
         .nav-btn.active {
-            background-color: var(--secondary);
-            color: white;
-            border-left: 4px solid var(--accent);
-            font-weight: bold;
+            border-left: none;
+            border-bottom: 4px solid var(--accent);
+            background-color: rgba(255,255,255,0.05);
         }
 
-        /* Main Content Area */
+        /* Zone centrale d'affichage */
         .main-content {
-            flex-grow: 1;
-            padding: 30px 40px;
-            overflow-y: auto;
+            padding: 15px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        .process-view {
-            display: none;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        .process-view.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Process Header (Metadata) */
         .process-header {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            border-top: 5px solid var(--secondary);
+            padding: 15px;
+            margin-bottom: 20px;
         }
 
         .process-title {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin: 0 0 15px 0;
+            font-size: 1.3rem;
+            text-align: center;
         }
 
-        .metadata-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            font-size: 0.9rem;
-        }
-
-        .meta-box {
-            background: var(--bg-light);
-            padding: 10px 15px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
-
-        .meta-box strong {
-            color: var(--secondary);
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        /* Logigramme Layout */
+        /* Le Logigramme principal passe au format vertical */
         .logigramme-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: stretch;
-            gap: 20px;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .flow-column {
-            flex: 1;
-            display: flex;
             flex-direction: column;
-        }
-
-        .column-title {
-            text-align: center;
-            font-weight: bold;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-            color: white;
-        }
-
-        .col-entrees .column-title { background-color: #0284c7; }
-        .col-processus .column-title { background-color: #16a34a; }
-        .col-sorties .column-title { background-color: #9333ea; }
-
-        /* Flow Items */
-        .item-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .item-box {
-            padding: 10px 15px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            border-left: 4px solid;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-
-        .col-entrees .item-box { background: var(--input-bg); border-color: #0284c7; }
-        .col-sorties .item-box { background: var(--output-bg); border-color: #9333ea; }
-
-        /* Process Steps */
-        .step-box {
-            background: var(--process-bg);
-            border: 2px solid #16a34a;
-            border-radius: 8px;
             padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            position: relative;
-            margin-bottom: 25px;
-            z-index: 2;
+            gap: 5px;
         }
 
-        .step-box::after {
-            content: '↓';
-            position: absolute;
-            bottom: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 20px;
-            color: #16a34a;
-            font-weight: bold;
-        }
-
-        .step-box:last-child::after {
-            display: none;
-        }
-
-        /* Connecting Arrows between columns */
+        /* La flèche horizontale (→) tourne pour pointer vers le bas (↓) */
         .arrow-col {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            color: #94a3b8;
-            padding: 0 10px;
+            transform: rotate(90deg);
+            margin: 10px auto;
+            font-size: 28px;
+            height: auto;
+            padding: 0;
         }
 
-        /* Finalité */
-        .finalite-box {
-            margin-top: 30px;
-            background: #fffbeb;
-            border: 1px solid #fcd34d;
-            border-left: 6px solid #f59e0b;
-            padding: 20px;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            text-align: center;
+        .step-box {
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
         }
-        /* Styles pour le Schéma Détaillé en Zigzag */
-        .details-section {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 2px dashed var(--border);
+        
+        .step-box::after {
+            bottom: -20px;
+            font-size: 16px;
         }
 
-        .details-title {
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-        }
-
-        .zigzag-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
+        /* Le schéma détaillé s'aligne proprement sur la gauche */
+        .zigzag-container::before {
+            left: 25px; /* Aligné pile au milieu du rond de numérotation */
+            transform: none;
         }
 
         .zigzag-step {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            flex-direction: row !important;
+            text-align: left !important;
+            gap: 15px;
             width: 100%;
         }
 
-        .zigzag-step:nth-child(even) {
-            flex-direction: row-reverse;
-            text-align: right;
-        }
-
         .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-            border: 4px solid #dbeafe;
-            z-index: 2;
+            width: 50px;
+            height: 50px;
+            font-size: 1rem;
+            border-width: 3px;
         }
 
         .step-content {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            flex-grow: 1;
+            padding: 12px;
         }
 
-        .step-content h4 {
-            margin: 0 0 5px 0;
-            color: var(--secondary);
+        .finalite-box {
+            font-size: 0.95rem;
+            padding: 15px;
         }
-
-        .step-content p {
-            margin: 0;
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        /* Ligne de liaison verticale 
-        .zigzag-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            background: #cbd5e1;
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-        */
+    }
 
     </style>
 </head>
