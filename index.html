@@ -436,20 +436,314 @@
     </style>
 </head>
 <body>
-
     <div class="sidebar">
         <h2>Cartographie IMSI</h2>
+        
+        <div style="padding: 10px 20px; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase;">Pilotage</div>
+        <button class="nav-btn" onclick="openProcess('P1')">P1 - Gouvernance</button>
+        <button class="nav-btn" onclick="openProcess('P2')">P2 - Assurance Qualité</button>
+        <button class="nav-btn" onclick="openProcess('P3')">P3 - Communication</button>
+
+        <div style="padding: 10px 20px; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; margin-top: 10px;">Réalisation</div>
         <button class="nav-btn active" onclick="openProcess('R1_1')">R1.1 - Enseignement</button>
         <button class="nav-btn" onclick="openProcess('R1_2')">R1.2 - Scolarité</button>
         <button class="nav-btn" onclick="openProcess('R1_3')">R1.3 - Évaluation</button>
         <button class="nav-btn" onclick="openProcess('R1_4')">R1.4 - Projet 1275</button>
-        <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 20px;">
         <button class="nav-btn" onclick="openProcess('R2_1')">R2.1 - Post-graduation</button>
         <button class="nav-btn" onclick="openProcess('R2_2')">R2.2 - Recherche Scientifique</button>
         <button class="nav-btn" onclick="openProcess('R2_3')">R2.3 - Coopération et RI</button>
-    </div>
 
+        <div style="padding: 10px 20px; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; margin-top: 10px;">Support</div>
+        <button class="nav-btn" onclick="openProcess('S1')">S1 - Ressources Humaines</button>
+        <button class="nav-btn" onclick="openProcess('S2')">S2 - Moyens Généraux</button>
+        <button class="nav-btn" onclick="openProcess('S3')">S3 - Finances</button>
+        <button class="nav-btn" onclick="openProcess('S4')">S4 - Système d'Information</button>
+        <button class="nav-btn" onclick="openProcess('S5')">S5 - Bibliothèque</button>
+        <button class="nav-btn" onclick="openProcess('S6')">S6 - Vie Estudiantine</button>
+    </div>
+    
     <div class="main-content">
+        <div id="P1" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">P1 – Gouvernance</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Direction de l'Institut, Conseils (direction & scientifique)</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Taux de réalisation du plan, Tenue des conseils, Exécution budgétaire</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>Direction générale, Secrétariat général, Budget</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Manque de coordination, Retards de décisions, Inertie réglementaire</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Directives ministérielles</li>
+                        <li class="item-box">Orientations de l'université</li>
+                        <li class="item-box">Bilans des départements</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Définition des orientations</div>
+                    <div class="step-box">2. Planification et allocation</div>
+                    <div class="step-box">3. Pilotage et coordination</div>
+                    <div class="step-box">4. Suivi de l'exécution</div>
+                    <div class="step-box">5. Animation des conseils</div>
+                    <div class="step-box">6. Revue de direction</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Projet d'établissement</li>
+                        <li class="item-box">Décisions et délibérations</li>
+                        <li class="item-box">Plans d'action annuels</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Assurer le pilotage stratégique et la conformité réglementaire de l'institut afin de garantir l'atteinte des objectifs.
+            </div>
+
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Définition de la stratégie</h4>
+                            <p>Analyse des directives ministérielles et élaboration de la vision globale et des objectifs de l'établissement.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Planification annuelle</h4>
+                            <p>Élaboration du budget prévisionnel et répartition des ressources (humaines, matérielles, financières).</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Pilotage opérationnel</h4>
+                            <p>Coordination des actions entre les départements pédagogiques et les services administratifs.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Suivi et évaluation</h4>
+                            <p>Analyse des tableaux de bord et mesure de l'état d'avancement des projets institutionnels.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Instances délibératives</h4>
+                            <p>Tenue régulière des réunions du Conseil de Direction et du Conseil Scientifique de l'Institut.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Revue de direction</h4>
+                            <p>Bilan annuel global, identification des axes d'amélioration et réajustement de la stratégie pour l'année suivante.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="P2" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">P2 – Assurance Qualité (CAQ)</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Responsable CAQ, Comité d'auto-évaluation, Direction</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Taux d'avancement des actions, Conformité, Participation</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>Membres cellule, Outils de sondage, Référentiels</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Résistance au changement, Données biaisées, Retards</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Référentiel qualité (ISO/RNAQES)</li>
+                        <li class="item-box">Résultats des enquêtes</li>
+                        <li class="item-box">Bilans d'activités</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Planification qualité</div>
+                    <div class="step-box">2. Sensibilisation interne</div>
+                    <div class="step-box">3. Audits et auto-évaluations</div>
+                    <div class="step-box">4. Analyse des indicateurs</div>
+                    <div class="step-box">5. Rédaction du RAE</div>
+                    <div class="step-box">6. Suivi des plans d'action</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Rapport d'Auto-Évaluation (RAE)</li>
+                        <li class="item-box">Plans d'amélioration</li>
+                        <li class="item-box">Fiches de non-conformité</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Installer une culture d'amélioration continue pour garantir la conformité du système de management de la qualité.
+            </div>
+
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Planification</h4>
+                            <p>Définition du calendrier annuel des évaluations, enquêtes de satisfaction et audits internes.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Sensibilisation</h4>
+                            <p>Communication auprès des enseignants, personnels et étudiants sur l'importance de la démarche qualité.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Évaluations et Audits</h4>
+                            <p>Lancement des questionnaires (ex: Évaluation des Enseignements) et réalisation des visites d'audit des services.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Traitement des données</h4>
+                            <p>Collecte des réponses, traitement statistique et identification des forces, faiblesses et non-conformités.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Rédaction du RAE</h4>
+                            <p>Écriture du Rapport d'Auto-Évaluation institutionnel conformément aux exigences du référentiel.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Amélioration continue</h4>
+                            <p>Élaboration du plan d'action correctif, diffusion aux pilotes de processus et suivi périodique de son exécution.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="P3" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">P3 – Communication</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Responsable communication, Direction, Webmestre</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Audience site web, Fréquence des MAJ, Satisfaction</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>Personnel dédié, Serveurs web, Matériel multimédia</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Infos obsolètes, Faible visibilité, Canaux saturés</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Actualités de l'institut</li>
+                        <li class="item-box">Notes administratives</li>
+                        <li class="item-box">Charte graphique</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Plan de communication</div>
+                    <div class="step-box">2. Recueil des informations</div>
+                    <div class="step-box">3. Conception des supports</div>
+                    <div class="step-box">4. Gestion des plateformes</div>
+                    <div class="step-box">5. Organisation logistique</div>
+                    <div class="step-box">6. Évaluation de l'impact</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Site web mis à jour</li>
+                        <li class="item-box">Supports (affiches, flyers)</li>
+                        <li class="item-box">Communiqués officiels</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Assurer une diffusion fluide et transparente de l'information pour renforcer la visibilité de l'institut.
+            </div>
+
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Stratégie de communication</h4>
+                            <p>Définition de la ligne éditoriale annuelle, planification des campagnes (internes et externes).</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Collecte de l'information</h4>
+                            <p>Réception des notes des départements, annonces de soutenances, événements scientifiques et culturels.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Création de contenu</h4>
+                            <p>Rédaction des communiqués, conception graphique des affiches, bannières et vidéos promotionnelles.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Diffusion numérique</h4>
+                            <p>Mise en ligne sur le site web officiel, publication sur les réseaux sociaux et envoi de newsletters institutionnelles.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Couverture événementielle</h4>
+                            <p>Prise en charge médiatique des événements (Portes ouvertes, conférences) avec reportage photo/vidéo.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Analyse des retombées</h4>
+                            <p>Mesure de l'audience web, analyse des interactions sociales et ajustement de la stratégie de communication.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div id="R1_1" class="process-view active">
             <div class="process-header">
@@ -1104,23 +1398,600 @@
             </div>
         </div>
 
+        <div id="S1" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">S1 – Ressources Humaines</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Secrétariat Général, Service du personnel</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Couverture des besoins, Délai des actes, Absentéisme</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>SI (Progrès/SGBD), Archives physiques</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Retards d'actes, Erreurs de paie, Sous-effectif</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Besoins en encadrement</li>
+                        <li class="item-box">Textes statutaires (Fonction Publique)</li>
+                        <li class="item-box">Demandes des agents</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Recrutement</div>
+                    <div class="step-box">2. Gestion des carrières</div>
+                    <div class="step-box">3. Gestion quotidienne</div>
+                    <div class="step-box">4. Plan de formation</div>
+                    <div class="step-box">5. Gestion de la paie</div>
+                    <div class="step-box">6. Contentieux et retraites</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Actes administratifs visés</li>
+                        <li class="item-box">Fiches de paie</li>
+                        <li class="item-box">Dossiers de carrière à jour</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Mettre à disposition un personnel qualifié, épanoui et administrativement suivi pour la continuité des activités.
+            </div>
+
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Recensement et Recrutement</h4>
+                            <p>Analyse des besoins en personnels (enseignants et ATS), organisation des concours ou entretiens d'embauche.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Évolution de carrière</h4>
+                            <p>Traitement administratif des titularisations, avancements d'échelons et promotions de grades.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Gestion courante</h4>
+                            <p>Suivi des présences, traitement des autorisations d'absence, congés maladies et congés annuels.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Formation continue</h4>
+                            <p>Identification des besoins en compétences et mise en œuvre du plan de formation pour les agents ATS.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Traitement de la Paie</h4>
+                            <p>Saisie des éléments variables, traitement des primes, édition et vérification des états de paie mensuels.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Départs et Contentieux</h4>
+                            <p>Constitution des dossiers de mise à la retraite, gestion des conflits disciplinaires et archivage sécurisé.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="S2" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">S2 – Moyens Généraux</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Secrétariat Général, Service maintenance</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Délai d'intervention, Conformité inventaire, Ruptures</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>Agents techniques, Budget, Outillage, Magasin</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Dégradations, Pannes bloquantes, Retards livraisons</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Demandes d'achat</li>
+                        <li class="item-box">Signalements de pannes</li>
+                        <li class="item-box">Budget de fonctionnement</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Recensement des besoins</div>
+                    <div class="step-box">2. Approvisionnements</div>
+                    <div class="step-box">3. Maintenance préventive</div>
+                    <div class="step-box">4. Maintenance corrective</div>
+                    <div class="step-box">5. Entretien quotidien</div>
+                    <div class="step-box">6. Gestion de l'inventaire</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Locaux et équipements opérationnels</li>
+                        <li class="item-box">Consommables livrés</li>
+                        <li class="item-box">Registre d'inventaire à jour</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Fournir et maintenir des infrastructures, espaces d'études et matériels de travail sûrs et fonctionnels.
+            </div>
+
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Expression des besoins</h4>
+                            <p>Collecte des bons de commandes internes émanant des départements, laboratoires et services administratifs.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Achats et Stocks</h4>
+                            <p>Consultation des fournisseurs, passation des commandes, réception des livraisons et gestion du magasin central.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Entretien régulier</h4>
+                            <p>Gestion quotidienne du nettoyage des locaux, de l'entretien des espaces verts et du gardiennage (sécurité).</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Interventions techniques</h4>
+                            <p>Traitement des fiches de pannes (électricité, plomberie, menuiserie) et réparations urgentes des équipements.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Maintenance préventive</h4>
+                            <p>Vérification périodique des installations sensibles (chauffage, sécurité incendie) pour éviter les défaillances.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Suivi patrimonial</h4>
+                            <p>Codification du nouveau matériel, suivi des affectations physiques et réalisation de l'inventaire de fin d'année.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="S3" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">S3 – Finances</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Chef du service financier, Secrétariat Général</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Taux d'exécution, Rejets CF, Délai de paiement</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>Personnel comptable, Logiciels ministériels</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Dépassement de crédits, Rejets, Retards fournisseurs</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Dotations budgétaires</li>
+                        <li class="item-box">Factures fournisseurs</li>
+                        <li class="item-box">États des vacations</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Budget prévisionnel</div>
+                    <div class="step-box">2. Engagement comptable</div>
+                    <div class="step-box">3. Liquidation des factures</div>
+                    <div class="step-box">4. Gestion de la régie</div>
+                    <div class="step-box">5. Paiement des vacations</div>
+                    <div class="step-box">6. Clôture financière</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Mandats de paiement</li>
+                        <li class="item-box">PV d'engagement visés</li>
+                        <li class="item-box">Rapports financiers annuels</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Optimiser la gestion des ressources financières de l'établissement dans le respect des règles de la comptabilité publique.
+            </div>
+
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Préparation budgétaire</h4>
+                            <p>Recueil des besoins, arbitrage par la direction et élaboration du projet de budget de fonctionnement annuel.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Engagement des dépenses</h4>
+                            <p>Réservation des crédits correspondants aux commandes validées et envoi pour visa au Contrôleur Financier (CF).</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Liquidation</h4>
+                            <p>Vérification du service fait (livraison/travaux), rapprochement avec la facture et établissement du mandat de paiement.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Paiements spécifiques</h4>
+                            <p>Traitement des dossiers de paiement des heures de vacations d'enseignement et gestion de la régie d'avances.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Ordonnancement</h4>
+                            <p>Signature des mandats par l'ordonnateur (Directeur) et transmission à l'Agent Comptable pour règlement final.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Bilan et Reddition</h4>
+                            <p>Établissement du compte administratif de fin d'année et rapprochement comptable avec la trésorerie.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="S4" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">S4 – Système d'Information</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Responsable informatique, Ingénieurs réseaux</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Disponibilité réseau, Temps de dépannage, Incidents sécu.</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>Serveurs, Équipements réseaux, Logiciels</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Cyberattaques, Coupures réseau, Perte de données</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Demandes d'accès</li>
+                        <li class="item-box">Incidents techniques signalés</li>
+                        <li class="item-box">Directives de numérisation</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Infrastructure et réseau</div>
+                    <div class="step-box">2. Administration plateformes</div>
+                    <div class="step-box">3. Assistance technique</div>
+                    <div class="step-box">4. Sécurité et sauvegardes</div>
+                    <div class="step-box">5. Gestion des comptes</div>
+                    <div class="step-box">6. Numérisation des services</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Réseau stable (Wi-Fi/Fibre)</li>
+                        <li class="item-box">Plateformes accessibles 24/7</li>
+                        <li class="item-box">Données sauvegardées</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Garantir un SI performant, sécurisé et disponible pour soutenir la transformation numérique de l'établissement.
+            </div>
+
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Gestion Réseau</h4>
+                            <p>Supervision des routeurs, pare-feu et points d'accès Wi-Fi pour assurer une connectivité fluide et continue.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Hébergement Web</h4>
+                            <p>Maintenance des serveurs locaux ou distants et administration technique du site web et des plateformes (Moodle).</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Helpdesk</h4>
+                            <p>Intervention sur site pour dépanner les PC des laboratoires, salles machines et bureaux de l'administration.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Sécurisation</h4>
+                            <p>Mise à jour des antivirus, application des correctifs de sécurité et exécution des routines de sauvegarde (Backups).</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Gestion des accès</h4>
+                            <p>Création, modification et suppression des adresses emails institutionnelles et comptes d'accès aux systèmes.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Développement</h4>
+                            <p>Création ou intégration de nouvelles applications pour automatiser les tâches administratives ou pédagogiques.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="S5" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">S5 – Bibliothèque</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Responsable bibliothèque, Comité pédagogique</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Consultations, Fréquentation, Demandes satisfaites</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>Personnel biblio., Logiciel PMB, Fonds de livres</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Pertes d'ouvrages, Obsolescence, Faible fréquentation</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Demandes d'ouvrages</li>
+                        <li class="item-box">Besoins étudiants/chercheurs</li>
+                        <li class="item-box">Budgets d'acquisition</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Gestion des acquisitions</div>
+                    <div class="step-box">2. Catalogage et indexation</div>
+                    <div class="step-box">3. Gestion des prêts</div>
+                    <div class="step-box">4. Accueil et orientation</div>
+                    <div class="step-box">5. Gestion des espaces</div>
+                    <div class="step-box">6. Formation documentaire</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Fonds documentaire enrichi</li>
+                        <li class="item-box">Cartes et quitus délivrés</li>
+                        <li class="item-box">Base de données accessible</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Offrir un accès structuré et moderne à la documentation scientifique pour appuyer l'apprentissage.
+            </div>
+
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Acquisitions</h4>
+                            <p>Collecte des propositions bibliographiques auprès des enseignants, commande et réception des nouveaux livres.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Traitement documentaire</h4>
+                            <p>Estampillage, cotation, indexation logicielle (PMB) et rangement physique sur les rayonnages.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Inscriptions</h4>
+                            <p>Délivrance des cartes de bibliothèque en début d'année et gestion des profils lecteurs dans le système.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Circulation</h4>
+                            <p>Enregistrement informatique des prêts externes, gestion des retours, des relances pour retards et délivrance des Quitus.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Salles de lecture</h4>
+                            <p>Maintien du calme, gestion des accès aux espaces de consultation sur place et aux postes informatiques.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Recherche numérique</h4>
+                            <p>Accompagnement des doctorants et étudiants en Master pour l'utilisation du SNDL et autres bases de données.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="S6" class="process-view">
+            <div class="process-header">
+                <h2 class="process-title">S6 – Vie Estudiantine</h2>
+                <div class="metadata-grid">
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Service des activités, Représentants clubs</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Taux de participation, Nb de clubs, Manifestations orga.</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>Animateurs, Budget d'animation, Infrastructures</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Désengagement, Débordements, Budget insuffisant</div>
+                </div>
+            </div>
+
+            <div class="logigramme-container">
+                <div class="flow-column col-entrees">
+                    <div class="column-title">📖 ENTRÉES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Calendrier des activités</li>
+                        <li class="item-box">Projets des clubs</li>
+                        <li class="item-box">Demandes d'infrastructures</li>
+                    </ul>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-processus" style="flex: 1.5;">
+                    <div class="column-title">⚙️ PROCESSUS</div>
+                    <div class="step-box">1. Planification annuelle</div>
+                    <div class="step-box">2. Encadrement des clubs</div>
+                    <div class="step-box">3. Organisation sportive</div>
+                    <div class="step-box">4. Événements culturels</div>
+                    <div class="step-box">5. Espaces de détente</div>
+                    <div class="step-box">6. Évaluation d'impact</div>
+                </div>
+                <div class="arrow-col">→</div>
+                <div class="flow-column col-sorties">
+                    <div class="column-title">📄 SORTIES</div>
+                    <ul class="item-list">
+                        <li class="item-box">Clubs étudiants structurés</li>
+                        <li class="item-box">Tournois et manifestations</li>
+                        <li class="item-box">Espaces de vie animés</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="finalite-box">
+                <strong>🎯 Finalité :</strong> Favoriser un environnement d'apprentissage épanouissant et inclusif à travers des activités sportives, culturelles et citoyennes.
+            </div>
+
+            <div class="details-section">
+                <h3 class="details-title">Schématisation détaillée du processus</h3>
+                <div class="zigzag-container">
+                    <div class="zigzag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Programmation</h4>
+                            <p>Élaboration du planning annuel des compétitions sportives, célébrations nationales et sorties scientifiques.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Agrément des clubs</h4>
+                            <p>Réception des demandes de création de clubs étudiants, validation des bureaux et affectation de locaux associatifs.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Activités Sportives</h4>
+                            <p>Organisation logistique des tournois inter-départements (football, échecs) et mise à disposition du matériel.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Événementiel culturel</h4>
+                            <p>Soutien aux expositions, pièces de théâtre, journées d'intégration et conférences grand public animées par les étudiants.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Convivialité</h4>
+                            <p>Aménagement et gestion quotidienne des espaces communs (foyers, espaces verts) pour favoriser le bien-être.</p>
+                        </div>
+                    </div>
+                    <div class="zigzag-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Bilan associatif</h4>
+                            <p>Évaluation de la dynamique associative en fin d'année, récompense des clubs actifs et préparation de la rentrée suivante.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+<!-- Add this JavaScript right before </body> -->
     <script>
         function openProcess(processId) {
-            // Masquer toutes les vues
-            document.querySelectorAll('.process-view').forEach(view => {
+            // 1. Hide all process views
+            const views = document.querySelectorAll('.process-view');
+            views.forEach(view => {
                 view.classList.remove('active');
             });
-            // Désélectionner tous les boutons
-            document.querySelectorAll('.nav-btn').forEach(btn => {
+
+            // 2. Remove the active style from all navigation buttons
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
                 btn.classList.remove('active');
             });
-            
-            // Afficher la vue ciblée
-            document.getElementById(processId).classList.add('active');
-            // Activer le bouton cliqué (basé sur le clic de l'utilisateur)
-            event.currentTarget.classList.add('active');
+
+            // 3. Show the targeted process view
+            const targetView = document.getElementById(processId);
+            if (targetView) {
+                targetView.classList.add('active');
+            }
+
+            // 4. Highlight the clicked navigation button
+            // This finds the button using its onclick attribute matching the processId
+            const clickedBtn = document.querySelector(`[onclick="openProcess('${processId}')"]`);
+            if (clickedBtn) {
+                clickedBtn.classList.add('active');
+            }
         }
     </script>
-
 </body>
-</html>
