@@ -444,10 +444,9 @@
         <button class="nav-btn" onclick="openProcess('R1_3')">R1.3 - Évaluation</button>
         <button class="nav-btn" onclick="openProcess('R1_4')">R1.4 - Projet 1275</button>
         <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 20px;">
-        <button class="nav-btn" onclick="openProcess('R2_1')">R2.1 - Laboratoires</button>
-        <button class="nav-btn" onclick="openProcess('R2_2')">R2.2 - Projets Scientifiques</button>
-        <button class="nav-btn" onclick="openProcess('R2_3')">R2.3 - Production Scientifique</button>
-        <button class="nav-btn" onclick="openProcess('R2_4')">R2.4 - Doctorat</button>
+        <button class="nav-btn" onclick="showProcess('r2-1')">R2.1 - Post-graduation</button>
+        <button class="nav-btn" onclick="showProcess('r2-2')">R2.2 - Recherche Scientifique</button>
+        <button class="nav-btn" onclick="showProcess('r2-3')">R2.3 - Coopération et RI</button>
     </div>
 
     <div class="main-content">
@@ -849,12 +848,12 @@
         </div>
         <div id="R2_1" class="process-view">
             <div class="process-header">
-                <h2 class="process-title">R2.1 – Laboratoires de recherche</h2>
+                <h2 class="process-title">R2.1 – Post-graduation</h2>
                 <div class="metadata-grid">
-                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat recherche, Directeurs labos, Conseils scientifique, Conseil de formation doctorale.</div>
-                    <div class="meta-box"><strong>📈 Indicateurs</strong>Activités réalisées, Thèses soutenues, Manifestations</div>
-                    <div class="meta-box"><strong>⚙️ Ressources</strong>RH, SI, Bibliothèque, Finances, Textes réglementaires</div>
-                    <div class="meta-box"><strong>⚠️ Risques</strong>Faible coordination, Manque de moyens, Retards</div>
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat / Direction post-graduation, Comités sc.</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Taux de réussite concours, Avancement, Soutenances</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>Enseignants (HDR), Laboratoires, SI, Scolarité</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Abandon, Retards administratifs, Encadrement insuffisant</div>
                 </div>
             </div>
 
@@ -862,79 +861,71 @@
                 <div class="flow-column col-entrees">
                     <div class="column-title">📖 ENTRÉES</div>
                     <ul class="item-list">
-                        <li class="item-box">Orientations de recherche</li>
-                        <li class="item-box">Axes de recherche</li>
-                        <li class="item-box">Besoins socio-économiques</li>
-                        <li class="item-box">Projets académiques</li>
+                        <li class="item-box">Offres de formation habilitées</li>
+                        <li class="item-box">Textes réglementaires</li>
+                        <li class="item-box">Sujets validés & Candidats</li>
                     </ul>
                 </div>
                 <div class="arrow-col">→</div>
                 <div class="flow-column col-processus" style="flex: 1.5;">
                     <div class="column-title">⚙️ PROCESSUS</div>
-                    <div class="step-box">1. Définition des axes et programmation</div>
-                    <div class="step-box">2. Organisation du laboratoire</div>
-                    <div class="step-box">3. Réalisation des activités</div>
-                    <div class="step-box">4. Encadrement scientifique</div>
-                    <div class="step-box">5. Suivi et reporting</div>
-                    <div class="step-box">6. Amélioration et valorisation</div>
+                    <div class="step-box">1. Concours et admission</div>
+                    <div class="step-box">2. Inscriptions administratives</div>
+                    <div class="step-box">3. Suivi de l'avancement</div>
+                    <div class="step-box">4. Évaluation et soutenances</div>
+                    <div class="step-box">5. Délivrance des diplômes</div>
                 </div>
                 <div class="arrow-col">→</div>
                 <div class="flow-column col-sorties">
                     <div class="column-title">📄 SORTIES</div>
                     <ul class="item-list">
-                        <li class="item-box">Bilan et rapports d'activités</li>
-                        <li class="item-box">Manifestations scientifiques</li>
-                        <li class="item-box">Travaux encadrés</li>
-                        <li class="item-box">Résultats valorisés</li>
+                        <li class="item-box">Doctorants inscrits</li>
+                        <li class="item-box">Thèses encadrées et soutenues</li>
+                        <li class="item-box">Travaux originaux réalisés</li>
                     </ul>
                 </div>
             </div>
+
             <div class="finalite-box">
-                <strong>🎯 Finalité :</strong> Structurer et animer les laboratoires pour soutenir une recherche organisée, performante et conforme aux orientations de l’université.
+                <strong>🎯 Finalité :</strong> Assurer un parcours de post-graduation structuré, conforme à la réglementation, et garantissant l'aboutissement des travaux de thèse.
             </div>
+
             <div class="details-section">
                 <h3 class="details-title">Schématisation détaillée du processus</h3>
                 <div class="zigzag-container">
                     <div class="zigzag-step">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h4>Définition des axes </h4>
-                            <p>Identification et programmation des thématiques de recherche prioritaires.</p>
+                            <h4>Organisation du concours</h4>
+                            <p>Information du public, recueil des dossiers, organisation des épreuves d'accès et proclamation des lauréats.</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">2</div>
                         <div class="step-content">
-                            <h4>Organisation et fonctionnement </h4>
-                            <p>Structuration des équipes de recherche et gestion des moyens matériels.</p>
+                            <h4>Gestion des inscriptions</h4>
+                            <p>Traitement des premières inscriptions et suivi rigoureux des réinscriptions annuelles des doctorants.</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <h4>Réalisation des activités </h4>
-                            <p>Conduite des travaux de recherche académiques et appliqués.</p>
+                            <h4>Suivi scientifique</h4>
+                            <p>Accompagnement par le directeur de thèse, réalisation des travaux, point d'étape annuel (comités de suivi).</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">4</div>
                         <div class="step-content">
-                            <h4>Encadrement et animation </h4>
-                            <p>Supervision des chercheurs, des doctorants et organisation d'animations scientifiques.</p>
+                            <h4>Validation des travaux</h4>
+                            <p>Constitution du dossier de soutenance, expertise par les rapporteurs, tenue de la soutenance publique.</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">5</div>
                         <div class="step-content">
-                            <h4>Suivi et reporting </h4>
-                            <p>Évaluation de l'avancement des travaux et rédaction des rapports d'activités.</p>
-                        </div>
-                    </div>
-                    <div class="zigzag-step">
-                        <div class="step-number">6</div>
-                        <div class="step-content">
-                            <h4>Amélioration et valorisation </h4>
-                            <p>Valorisation des résultats obtenus et mise en œuvre d'actions d'amélioration.</p>
+                            <h4>Clôture du dossier</h4>
+                            <p>Délivrance officielle de l'attestation de réussite et du diplôme de Doctorat, puis archivage du dossier.</p>
                         </div>
                     </div>
                 </div>
@@ -943,12 +934,12 @@
 
         <div id="R2_2" class="process-view">
             <div class="process-header">
-                <h2 class="process-title">R2.2 – Projets scientifiques</h2>
+                <h2 class="process-title">R2.2 – Recherche Scientifique</h2>
                 <div class="metadata-grid">
-                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat recherche, Directeurs labos, Chefs de projets, Chefs d’équipes</div>
-                    <div class="meta-box"><strong>📈 Indicateurs</strong>Projets soumis/retenus, Taux d'exécution</div>
-                    <div class="meta-box"><strong>⚙️ Ressources</strong>RH, Finances, SI, Partenaires, Textes réglementaires</div>
-                    <div class="meta-box"><strong>⚠️ Risques</strong>Non-sélection, Retard d'exécution, Insuffisance budget</div>
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat recherche, Directeurs labos, Chefs de projets</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Projets financés, Publications indexées, Brevets</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>Chercheurs, Infrastructures, Budget, Bibliothèques</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Faible valorisation, Blocages budgétaires, Obsolescence</div>
                 </div>
             </div>
 
@@ -956,79 +947,71 @@
                 <div class="flow-column col-entrees">
                     <div class="column-title">📖 ENTRÉES</div>
                     <ul class="item-list">
-                        <li class="item-box">Appels à projets (CNEPRU, PRFU, à Impact socioéconomique, PNR)</li>
-                        <li class="item-box">Idées et problématiques</li>
-                        <li class="item-box">Partenariats scientifiques</li>
-                        <li class="item-box">Moyens financiers</li>
+                        <li class="item-box">Appels à projets (PRFU, PNR)</li>
+                        <li class="item-box">Orientations stratégiques</li>
+                        <li class="item-box">Besoins socio-économiques</li>
                     </ul>
                 </div>
                 <div class="arrow-col">→</div>
                 <div class="flow-column col-processus" style="flex: 1.5;">
                     <div class="column-title">⚙️ PROCESSUS</div>
-                    <div class="step-box">1. Veille et diffusion des appels</div>
-                    <div class="step-box">2. Montage et formulation du projet</div>
-                    <div class="step-box">3. Soumission et validation</div>
-                    <div class="step-box">4. Mise en œuvre du projet</div>
-                    <div class="step-box">5. Suivi administratif et financier</div>
-                    <div class="step-box">6. Clôture, bilan et amélioration</div>
+                    <div class="step-box">1. Définition des axes et projets</div>
+                    <div class="step-box">2. Soumission et validation</div>
+                    <div class="step-box">3. Expérimentations en labo</div>
+                    <div class="step-box">4. Rédaction et publication</div>
+                    <div class="step-box">5. Valorisation des résultats</div>
                 </div>
                 <div class="arrow-col">→</div>
                 <div class="flow-column col-sorties">
                     <div class="column-title">📄 SORTIES</div>
                     <ul class="item-list">
-                        <li class="item-box">Projets élaborés et soumis</li>
-                        <li class="item-box">Financements mobilisés</li>
-                        <li class="item-box">Livrables scientifiques</li>
-                        <li class="item-box">Résultats exploités</li>
+                        <li class="item-box">Projets exécutés et financés</li>
+                        <li class="item-box">Articles dans revues indexées</li>
+                        <li class="item-box">Brevets et prototypes</li>
                     </ul>
                 </div>
             </div>
+
             <div class="finalite-box">
-                <strong>🎯 Finalité :</strong> Développer des projets scientifiques pertinents, financés, suivis et porteurs de résultats utiles.
+                <strong>🎯 Finalité :</strong> Structurer, financer et animer les activités de recherche pour produire des résultats scientifiques pertinents, visibles et utiles.
             </div>
+
             <div class="details-section">
                 <h3 class="details-title">Schématisation détaillée du processus</h3>
                 <div class="zigzag-container">
                     <div class="zigzag-step">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h4>Veille et diffusion </h4>
-                            <p>Recherche et diffusion des appels à projets (PRFU, PNR) aux équipes.</p>
+                            <h4>Montage de projets</h4>
+                            <p>Identification des appels d'offres pertinents, constitution des équipes de chercheurs et rédaction des propositions de projets.</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">2</div>
                         <div class="step-content">
-                            <h4>Montage et formulation </h4>
-                            <p>Élaboration des propositions de projets autour d'idées et problématiques définies.</p>
+                            <h4>Validation institutionnelle</h4>
+                            <p>Examen par les instances scientifiques (Conseils de laboratoires, CSD, CSF) et soumission finale aux tutelles.</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <h4>Soumission et validation </h4>
-                            <p>Dépôt officiel des dossiers et attente de la validation par les instances.</p>
+                            <h4>Conduite de la recherche</h4>
+                            <p>Réalisation des travaux théoriques et pratiques au sein des laboratoires, collecte et analyse approfondie des données.</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">4</div>
                         <div class="step-content">
-                            <h4>Mise en œuvre du projet </h4>
-                            <p>Lancement des travaux de recherche conformément aux objectifs fixés.</p>
+                            <h4>Production scientifique</h4>
+                            <p>Rédaction d'articles scientifiques, soumission aux revues indexées (peer-review) et présentation lors de congrès internationaux.</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">5</div>
                         <div class="step-content">
-                            <h4>Suivi des projets </h4>
-                            <p>Suivi rigoureux sur le plan administratif, scientifique et financier.</p>
-                        </div>
-                    </div>
-                    <div class="zigzag-step">
-                        <div class="step-number">6</div>
-                        <div class="step-content">
-                            <h4>Clôture et bilan </h4>
-                            <p>Rédaction du bilan final, clôture du projet et capitalisation pour amélioration.</p>
+                            <h4>Suivi et Valorisation</h4>
+                            <p>Remise des bilans financiers et scientifiques, dépôt de brevets éventuels, et mise à disposition des résultats pour l'industrie.</p>
                         </div>
                     </div>
                 </div>
@@ -1037,12 +1020,12 @@
 
         <div id="R2_3" class="process-view">
             <div class="process-header">
-                <h2 class="process-title">R2.3 – Production scientifique</h2>
+                <h2 class="process-title">R2.3 – Coopération et Relations Internationales</h2>
                 <div class="metadata-grid">
-                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat recherche, Directeurs labos, Chercheurs</div>
-                    <div class="meta-box"><strong>📈 Indicateurs</strong>Articles publiés, Indice h, Publications indexées</div>
-                    <div class="meta-box"><strong>⚙️ Ressources</strong>RH, Bibliothèque, SI, Laboratoires, Textes réglementaires</div>
-                    <div class="meta-box"><strong>⚠️ Risques</strong>Rejet d'articles, Faible référencement, Normes non respectées</div>
+                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat (VRRE), Cellule de coopération, Direction</div>
+                    <div class="meta-box"><strong>📈 Indicateurs</strong>Conventions actives, Mobilités réalisées, Projets int.</div>
+                    <div class="meta-box"><strong>⚙️ Ressources</strong>Cellule RI, Budgets de mobilité, Outils de comm.</div>
+                    <div class="meta-box"><strong>⚠️ Risques</strong>Conventions inactives, Barrières de visa, Manque de fonds</div>
                 </div>
             </div>
 
@@ -1050,181 +1033,76 @@
                 <div class="flow-column col-entrees">
                     <div class="column-title">📖 ENTRÉES</div>
                     <ul class="item-list">
-                        <li class="item-box">Résultats de recherche</li>
-                        <li class="item-box">Travaux doctoraux</li>
-                        <li class="item-box">Appels à contribution (revues)</li>
-                        <li class="item-box">Normes éditoriales</li>
+                        <li class="item-box">Programmes de mobilité</li>
+                        <li class="item-box">Sollicitations de partenaires</li>
+                        <li class="item-box">Appels à coopération</li>
                     </ul>
                 </div>
                 <div class="arrow-col">→</div>
                 <div class="flow-column col-processus" style="flex: 1.5;">
                     <div class="column-title">⚙️ PROCESSUS</div>
-                    <div class="step-box">1. Identification des travaux</div>
-                    <div class="step-box">2. Rédaction et structuration</div>
-                    <div class="step-box">3. Choix du support de publication</div>
-                    <div class="step-box">4. Soumission (revue, colloque)</div>
-                    <div class="step-box">5. Révision et publication</div>
-                    <div class="step-box">6. Diffusion et référencement</div>
+                    <div class="step-box">1. Prospection de partenaires</div>
+                    <div class="step-box">2. Négociation et signature</div>
+                    <div class="step-box">3. Gestion de la mobilité</div>
+                    <div class="step-box">4. Suivi des projets conjoints</div>
+                    <div class="step-box">5. Évaluation et renouvellement</div>
                 </div>
                 <div class="arrow-col">→</div>
                 <div class="flow-column col-sorties">
                     <div class="column-title">📄 SORTIES</div>
                     <ul class="item-list">
-                        <li class="item-box">Articles publiés (revues)</li>
-                        <li class="item-box">Communications présentées</li>
-                        <li class="item-box">Productions référencées</li>
-                        <li class="item-box">Visibilité (ResearchGate)</li>
+                        <li class="item-box">Conventions signées</li>
+                        <li class="item-box">Étudiants/enseignants en mobilité</li>
+                        <li class="item-box">Projets internationaux finalisés</li>
                     </ul>
                 </div>
             </div>
+
             <div class="finalite-box">
-                <strong>🎯 Finalité :</strong> Accroître la production scientifique à travers la publication, tout en renforçant le référencement et la visibilité.
+                <strong>🎯 Finalité :</strong> Ouvrir l'établissement sur son environnement socio-économique et international pour favoriser l'échange de compétences et la mobilité.
             </div>
+
             <div class="details-section">
                 <h3 class="details-title">Schématisation détaillée du processus</h3>
                 <div class="zigzag-container">
                     <div class="zigzag-step">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h4>Identification des travaux </h4>
-                            <p>Sélection des travaux scientifiques et résultats de recherche valorisables.</p>
+                            <h4>Identification des opportunités</h4>
+                            <p>Veille sur les programmes internationaux (Erasmus+, PRIMA...) et prise de contact avec des universités ou industries cibles.</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">2</div>
                         <div class="step-content">
-                            <h4>Rédaction et structuration </h4>
-                            <p>Préparation de l’article ou de la communication selon les normes académiques.</p>
+                            <h4>Contractualisation</h4>
+                            <p>Rédaction des cadres juridiques (MOU, accords bilatéraux), validation par le conseil d'administration et signatures officielles.</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <h4>Choix du support </h4>
-                            <p>Sélection de la revue, du colloque ou de l'ouvrage collectif pour publication ou diffusion.</p>
+                            <h4>Déploiement de la mobilité</h4>
+                            <p>Organisation des appels à candidatures internes, sélection des profils et accompagnement administratif (visa, bourses).</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">4</div>
                         <div class="step-content">
-                            <h4>Soumission </h4>
-                            <p>Dépôt officiel du manuscrit auprès de la revue, du colloque ou de l'ouvrage collectif.</p>
+                            <h4>Pilotage des projets mixtes</h4>
+                            <p>Suivi régulier de l'exécution des thèses en cotutelle ou des programmes de recherche partagés avec les partenaires extérieurs.</p>
                         </div>
                     </div>
                     <div class="zigzag-step">
                         <div class="step-number">5</div>
                         <div class="step-content">
-                            <h4>Révision et acceptation </h4>
-                            <p>Processus de révision par les pairs, acceptation finale et publication.</p>
-                        </div>
-                    </div>
-                    <div class="zigzag-step">
-                        <div class="step-number">6</div>
-                        <div class="step-content">
-                            <h4>Diffusion et référencement </h4>
-                            <p>Partage des travaux, référencement académique et suivi de l’impact scientifique.</p>
+                            <h4>Bilan et reconduction</h4>
+                            <p>Évaluation des retombées directes de la convention à échéance, rapport d'impact et décision sur le renouvellement de l'accord.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div id="R2_4" class="process-view">
-            <div class="process-header">
-                <h2 class="process-title">R2.4 – Doctorat</h2>
-                <div class="metadata-grid">
-                    <div class="meta-box"><strong>🏛 Pilotage</strong>Vice-rectorat recherche, Dir. formation doctorale, Encadreurs</div>
-                    <div class="meta-box"><strong>📈 Indicateurs</strong>Taux d'avancement, Nb de soutenances, Diplomation</div>
-                    <div class="meta-box"><strong>⚙️ Ressources</strong>RH, Laboratoires, Bibliothèque, Scolarité doctorale, Textes réglementaires</div>
-                    <div class="meta-box"><strong>⚠️ Risques</strong>Abandon/Retard de thèse, Encadrement insuffisant</div>
-                </div>
-            </div>
-
-            <div class="logigramme-container">
-                <div class="flow-column col-entrees">
-                    <div class="column-title">📖 ENTRÉES</div>
-                    <ul class="item-list">
-                        <li class="item-box">Offres de formation doctorale</li>
-                        <li class="item-box">Sujets de thèse & Candidats</li>
-                        <li class="item-box">Ressources scientifiques</li>
-                        <li class="item-box">État d’avancement des travaux</li>
-                    </ul>
-                </div>
-                <div class="arrow-col">→</div>
-                <div class="flow-column col-processus" style="flex: 1.5;">
-                    <div class="column-title">⚙️ PROCESSUS</div>
-                    <div class="step-box">1. Information et admission</div>
-                    <div class="step-box">2. Inscriptions et réinscriptions</div>
-                    <div class="step-box">3. Encadrement et formation</div>
-                    <div class="step-box">4. Suivi de l’avancement</div>
-                    <div class="step-box">5. Soutenance et validation</div>
-                    <div class="step-box">6. Délivrance du diplôme</div>
-                </div>
-                <div class="arrow-col">→</div>
-                <div class="flow-column col-sorties">
-                    <div class="column-title">📄 SORTIES</div>
-                    <ul class="item-list">
-                        <li class="item-box">Doctorants inscrits</li>
-                        <li class="item-box">Thèses encadrées / Cotutelle</li>
-                        <li class="item-box">Publications doctorales</li>
-                        <li class="item-box">Soutenances organisées / Diplômes</li>
-                        <li class="item-box">Doctorants Abondants</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="finalite-box">
-                <strong>🎯 Finalité :</strong> Assurer un parcours doctoral structuré, conforme et favorable à l’aboutissement des thèses.
-            </div>
-            <div class="details-section">
-                <h3 class="details-title">Schématisation détaillée du processus</h3>
-                <div class="zigzag-container">
-                    <div class="zigzag-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Information et admission </h4>
-                            <p>Diffusion des offres de formation doctorale et traitement des candidatures.</p>
-                        </div>
-                    </div>
-                    <div class="zigzag-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Inscriptions et réinscriptions </h4>
-                            <p>Gestion administrative des inscriptions initiales et des renouvellements annuels.</p>
-                        </div>
-                    </div>
-                    <div class="zigzag-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Encadrement et formation </h4>
-                            <p>Accompagnement par l'encadreur et participation aux formations doctorales.</p>
-                        </div>
-                    </div>
-                    <div class="zigzag-step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h4>Suivi de l’avancement</h4>
-                            <p>Évaluation régulière de l'état d’avancement des travaux de thèse.</p>
-                        </div>
-                    </div>
-                    <div class="zigzag-step">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h4>Soutenance et validation </h4>
-                            <p>Organisation du jury de soutenance et validation finale de la thèse.</p>
-                        </div>
-                    </div>
-                    <div class="zigzag-step">
-                        <div class="step-number">6</div>
-                        <div class="step-content">
-                            <h4>Délivrance du diplôme </h4>
-                            <p>Remise officielle du diplôme de doctorat et intégration des actions d'amélioration.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
 
     <script>
         function openProcess(processId) {
